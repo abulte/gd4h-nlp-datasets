@@ -1,0 +1,83 @@
+Gestion des eaux:
+  - Eau
+  - Stress hydrique
+  - Trame bleue
+
+Qualité des sols:
+  - Sol
+  - Poussière
+  - Sédiment
+
+Aménagement et occupation du sol:
+  - Sol
+  - Occupation
+  - Usage
+  - Amiante
+
+Champs électromagnétiques:
+  - Rayonnements ionisants
+  - Rayonnements non-ionisants
+  - Rayonnements optiques
+  - Nanoparticules de carbone
+  - Champs électromagétiques
+
+Qualité de l'air:
+  - Air
+  - Monoxyde de carbone
+
+Environnement sonore:
+  - Bruit
+  - Nuisance sonore
+  - Ambiance thermique
+  - Vibration
+
+Luminosité:
+  - Eclairage public
+
+Température:
+  - Canicule
+  - Ilôt de chaleur
+  - Ilôt de fraicheur
+  - Température
+
+Risques alimentaires:
+  - Aliment
+  - Conservateur
+
+Biodiversité:
+  - Faune
+  - Flore
+  - Végétal
+  - Végétaux
+  - Insecte
+  - Réservoir biologique
+  - Bactérie
+  - Champignon microscopique
+  - Trame verte
+  - Végétalisation
+  - Végétation
+  - Parc
+  - Nature en ville
+  - Espaces verts
+  - Zoonose
+
+Autre:
+  - Virus
+  - Parasite
+  - Prion
+  - Pollen
+  - Toxine
+  - Métaux lourds
+  - Pesticides
+  - Produits phytosanitaires
+  - Biocides
+  - Polluant
+  - Hydrocarbure
+  - Perturbateurs endocriniens
+  - PCB
+  - Dioxine
+  - Acrylamide
+  - Plomb
+  - Arsenic
+  - Chlordécone
+  - PFAS
