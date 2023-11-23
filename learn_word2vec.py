@@ -11,7 +11,7 @@ from progressist import ProgressBar
 from slugify import slugify
 from sklearn.metrics.pairwise import cosine_similarity
 
-from utils import load_tokenized_corpus, load_raw_keywords, load_kw_file, tokenize
+from utils import load_tokenized_corpus, load_raw_keywords, load_kw_file
 
 
 @cli
@@ -37,9 +37,8 @@ def compute(catalog: Path, theme: str = "all", refresh=False, storage=None):
 
     expression_vectors = []
     for expression in keyword_expressions:
-        tokens = tokenize(expression)
         expression_vector = np.mean(
-            [word2vec_model.wv[token] for token in tokens if token in word2vec_model.wv],
+            [word2vec_model.wv[word] for word in expression.split() if word in word2vec_model.wv],
             axis=0,
         )
         # TODO: measure this
