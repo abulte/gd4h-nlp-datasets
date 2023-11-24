@@ -1,0 +1,8 @@
+llm
+llm-sentence-transformers
+gensim
+slugify
+progressist
+sklearn
+minicli
+python-dotenv

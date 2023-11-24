@@ -13,8 +13,6 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from progressist import ProgressBar
 
-nltk.download("punkt")
-
 
 def load_raw_corpus(source: Path, max: int | None = None) -> list:
     """
@@ -60,13 +58,15 @@ def tokenize(data: str, min_length: int = 2) -> list:
     - remove markdown formatting
     - remove stopword, short words and apostrophes
     """
+    nltk.download("punkt")
     parser = MarkdownIt(renderer_cls=RendererPlain)
     french_stop_words = stopwords.words("french")
     txt_data = parser.render(data)
     # supprime les apostrophes et le préfixe
     cleaned_text = re.sub(r"[cdjlmnsty]['’](\w*)", r'\1', txt_data, flags=re.IGNORECASE)
     tokens = word_tokenize(cleaned_text, language="french")
-    cleaned_tokens = [w.lower() for w in tokens if w.lower() not in french_stop_words and len(w) >= min_length]
+    cleaned_tokens = [w.lower() for w in tokens if w.lower()
+                      not in french_stop_words and len(w) >= min_length]
     return cleaned_tokens
 
 

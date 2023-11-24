@@ -26,7 +26,8 @@ def compute(catalog: Path, theme: str = "all", refresh=False, storage=None):
     mpath = Path("word2vec-model.bin")
     if not mpath.exists() or refresh:
         print("Training model...")
-        word2vec_model = Word2Vec(sentences=corpus, vector_size=100, window=5, min_count=1, workers=4)
+        word2vec_model = Word2Vec(sentences=corpus, vector_size=100,
+                                  window=5, min_count=1, workers=4)
         word2vec_model.save(mpath.name)
     else:
         print("Loading existing model...")
