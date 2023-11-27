@@ -14,19 +14,19 @@ from nltk.tokenize import word_tokenize
 from progressist import ProgressBar
 
 
-def load_raw_corpus(source: Path, max: int | None = None) -> list:
+def load_raw_corpus(source: Path, max: int | None = None, delimiter: str = ";") -> list:
     """
     Returns [("{slug}", "{text}")]
     """
     cur = 0
     corpus = []
     with source.open() as f:
-        reader = csv.DictReader(f, delimiter=";")
+        reader = csv.DictReader(f, delimiter=delimiter)
         for line in reader:
             if max and cur == max:
                 break
 
-            if not line["archived"] == "False":
+            if "archived" in line and not line["archived"] == "False":
                 continue
 
             cur += 1

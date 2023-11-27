@@ -23,7 +23,7 @@ collection = llm.Collection(os.getenv("LLM_COLLECTION"), db)
 
 
 @cli
-def compute(number: int = 100):
+def compute(number: int = -1):
     output_path = Path("./output") / datetime.now().strftime('%Y%m%d-%H%M%S')
     output_path.mkdir()
     model_name = collection.model_id.split("/")[1]
@@ -34,6 +34,7 @@ def compute(number: int = 100):
         entries = collection.similar(" ".join(corpus), number=number)
         with (output_path / f"{model_name}-output_{theme}.csv").open("w") as f:
             writer = csv.DictWriter(f, fieldnames=["slug", "score"])
+            writer.writeheader()
             writer.writerows([
                 {
                     "slug": entry.id,
