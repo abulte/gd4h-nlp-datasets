@@ -5,6 +5,5 @@ output/
 export-dataset*.csv
 datasets-filtered.csv
 .ipynb_checkpoints/
-*.ipynb
 *.db
 pyenv310/
