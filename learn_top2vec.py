@@ -12,7 +12,10 @@ catalog = Path("datasets-filtered.csv")
 @cli
 def train_model(embedding_model="distiluse-base-multilingual-cased"):
     slugs, corpus = zip(*load_raw_corpus(catalog, delimiter=","))
-    model = Top2Vec(list(corpus), embedding_model=embedding_model, document_ids=list(slugs))
+    model = Top2Vec(
+        list(corpus), embedding_model=embedding_model, document_ids=list(slugs),
+        split_documents=True, keep_documents=False,
+    )
     model.save(f"top2vec_{embedding_model}.bin")
 
 

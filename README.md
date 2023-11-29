@@ -27,7 +27,7 @@ Note the `_{theme}` optionnal component: when applicable, it identifies a given 
 
 Lives in `learn_word2vec.py`.
 
-This method trains a [custom Word2Vec model with gensim](https://radimrehurek.com/gensim/models/word2vec.html), using a corpus generated from the data.gouv.fr's datasets catalog. The corpus is tokenized beforehand using NLTK french tokenizer and some custom adjustements (remove markdown, min token size, remove contractions).
+This method trains a [custom Word2Vec model with gensim](https://radimrehurek.com/gensim/models/word2vec.html) (cbog), using a corpus generated from the data.gouv.fr's datasets catalog. The corpus is tokenized beforehand using NLTK french tokenizer and some custom adjustements (remove markdown, min token size, remove contractions). Corpus contains title and description of every dataset in the catalog, except archived ones.
 
 It then computes :
 - a vector for a list of keyword expressions (see input), expressed in the discrete vector space of the trained model
@@ -62,13 +62,15 @@ Outputs for this method:
 
 ## top2vec
 
-Live in `learn_top2vec.py` for training and `top2vec.ipynb` for exploration.
+Live in `learn_top2vec.py` for training `top2vec.ipynb` and `top2vec_search.ipynb` for exploration.
 
 This uses the [Top2Vec](https://github.com/ddangelov/Top2Vec) to explore a different approach: topic modeling.
 
 The embedding model used is `distiluse-base-multilingual-cased`.
 
 The general idea is to let the library create some clusters (topics) and try to select some of those topics based on our inputs.
+
+The corpus contains the title, description and tags (untouched before being fed to the model) of every dataset in the catalog, except archived ones.
 
 Once the topics have been infered, two methods have been applied:
 - [search_topics](https://top2vec.readthedocs.io/en/latest/api.html#top2vec.Top2Vec.Top2Vec.search_topics): semantic search of topics using keywords matching. The keywords are those defined for each themes in `keywords.yml`.
@@ -81,3 +83,4 @@ This method looks promising because exploring the topics manually shows some ver
 Outputs for this method:
 - `20231127-125722` with `search_topics`
 - `20231127-170325` with `query_topics`
+- `20231129-115554` with modified `search_topics` and a new model

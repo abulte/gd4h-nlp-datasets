@@ -7,11 +7,15 @@ from minicli import cli, run
 raw_output_path = Path("./output")
 output_path = Path("./output-filtered")
 datasets_list = Path("export-dataset.csv")
-org_mapping = Path("../gd4h/apiextras/apiextras/harvester/data/organizations_mapping.csv")
+org_mapping = Path(
+    "../gd4h/apiextras/apiextras/harvester/data/organizations_mapping.csv"
+)
 
 
 @cli
-def map_gd4h(number=5000):
+def map_gd4h(
+    number=5000, output_folder: str | None = None, slug_col: str = "slug_or_id"
+):
     """
     Parses an NLP output and maps to GD4H organization if any
     """
@@ -21,14 +25,17 @@ def map_gd4h(number=5000):
     with datasets_list.open() as f:
         reader = csv.DictReader(f, delimiter=";")
         for line in reader:
-            slug_org.append((line["slug"], line["organization"], line["organization_id"]))
+            slug_org.append(
+                (line["slug"], line["organization"], line["organization_id"])
+            )
 
     gd4h_map = []
     with org_mapping.open() as f:
         reader = csv.DictReader(f, delimiter=";")
         gd4h_map = [r["datagouvfr_id"] for r in reader if r["datagouvfr_id"]]
 
-    for nlp_output in raw_output_path.glob("*/*.csv"):
+    folder = output_folder or "*"
+    for nlp_output in raw_output_path.glob(f"{folder}/*.csv"):
         print(f"{nlp_output}...")
         # slug to org info mapping from datasets list
         new_lines = []
@@ -36,7 +43,7 @@ def map_gd4h(number=5000):
             reader = csv.DictReader(f)
             for idx, line in enumerate(reader):
                 try:
-                    ref = next(so for so in slug_org if so[0] == line["slug"])
+                    ref = next(so for so in slug_org if so[0] == line[slug_col])
                 except StopIteration:
                     print(f"[ERROR] slug {line['slug']} not found in catalog")
                     continue
@@ -49,7 +56,7 @@ def map_gd4h(number=5000):
         iter_output_path.mkdir(exist_ok=True)
         iter_output_file = iter_output_path / f"{nlp_output.stem}-mapped.csv"
         with Path(iter_output_file).open("w") as f:
-            writer = csv.DictWriter(f, fieldnames=["slug", "score", "in_gd4h"])
+            writer = csv.DictWriter(f, fieldnames=[slug_col, "score", "in_gd4h", "topic"])
             writer.writeheader()
             writer.writerows(new_lines)
 
@@ -61,7 +68,7 @@ def map_gd4h(number=5000):
 
         iter_output_file = iter_output_path / f"{nlp_output.stem}-mapped-filtered.csv"
         with Path(iter_output_file).open("w") as f:
-            writer = csv.DictWriter(f, fieldnames=["slug", "score", "in_gd4h"])
+            writer = csv.DictWriter(f, fieldnames=[slug_col, "score", "in_gd4h", "topic"])
             writer.writeheader()
             writer.writerows(new_lines)
 

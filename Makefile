@@ -14,9 +14,14 @@ download:
 clean:
 	llm collections delete $(LLM_COLLECTION) -d $(LLM_DB) || true
 
+.PHONY: filter
+QSV_FILTER="archived == 'False' and tonumber(resources_count) > 0 and organization_id"
+QSV_COLUMNS=slug,title,description,tags
+filter:
+	qsv luau filter -d";" $(QSV_FILTER) export-dataset.csv | qsv select $(QSV_COLUMNS) > datasets-filtered.csv
+
 .PHONY: embeddings
-embeddings: clean download
-	qsv luau filter -d";" "archived == 'False' and tonumber(resources_count) > 0" export-dataset.csv | qsv select slug,title,description,tags > datasets-filtered.csv
+embeddings: clean download filter
 	llm embed-multi -m $(LLM_MODEL) $(LLM_COLLECTION) datasets-filtered.csv -d $(LLM_DB) --format csv
 
 .PHONY: test
