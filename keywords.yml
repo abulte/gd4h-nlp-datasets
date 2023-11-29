@@ -2,17 +2,27 @@ Gestion des eaux:
   - Eau
   - Stress hydrique
   - Trame bleue
+  - Eau de pluie
+  - Eaux pluviales
+  - Eaux de surface
+  - Eaux souterraines
 
 Qualité des sols:
   - Sol
   - Poussière
   - Sédiment
+  - Sous-sol
+  - Perméabilité du sol
+  - Perméabilité du sous-sol
+  - Géologie
+  - Nappe
 
 Aménagement et occupation du sol:
   - Sol
   - Occupation
   - Usage
   - Amiante
+  - Artificialisation
 
 Champs électromagnétiques:
   - Rayonnements ionisants
@@ -20,29 +30,61 @@ Champs électromagnétiques:
   - Rayonnements optiques
   - Nanoparticules de carbone
   - Champs électromagétiques
+  - Emetteur de radiofréquences
+  - Haute fréquence
+  - Antennes relais
+  - Antennes de télédiffusion
+  - Radars
+  - Lignes à haut tension
+  - Lignes à très haute tension
+  - Basse fréquence
 
 Qualité de l'air:
   - Air
   - Monoxyde de carbone
+  - Oxyde d’azote
+  - Composé organique volatile
+  - COV
+  - PM10
+  - PM2.5
+  - Particules
+  - Ozone
+  - Dioxyde d’azote
+  - Chauffage
+  - Odeur
 
 Environnement sonore:
   - Bruit
   - Nuisance sonore
   - Ambiance thermique
   - Vibration
+  - Acoustique
+  - Source sonore
+  - Sensation auditive
+  - Chant
+  - Cri
 
 Luminosité:
   - Eclairage public
+  - Lumière naturelle
+  - Lumière artificielle
+  - Ombrage naturel
+  - Ombrage artificiel
 
 Température:
   - Canicule
   - Ilôt de chaleur
   - Ilôt de fraicheur
   - Température
+  - Albédo
+  - Pouvoir réfléchissant
+  - Evapotranspiration
 
 Risques alimentaires:
   - Aliment
   - Conservateur
+  - Agriculture biologique
+  - Agriculture industrielle
 
 Biodiversité:
   - Faune
@@ -51,7 +93,6 @@ Biodiversité:
   - Végétaux
   - Insecte
   - Réservoir biologique
-  - Bactérie
   - Champignon microscopique
   - Trame verte
   - Végétalisation
@@ -60,6 +101,11 @@ Biodiversité:
   - Nature en ville
   - Espaces verts
   - Zoonose
+  - Algue verte
+  - Habitats naturels
+  - Espaces végétalisés
+  - Strates végétales
+  - Surface végétalisée
 
 Autre:
   - Virus
@@ -81,3 +127,15 @@ Autre:
   - Arsenic
   - Chlordécone
   - PFAS
+  - HAP
+  - Métaux
+  - Matières en suspension
+  - Matières organiques
+  - Microplastiques
+  - Hydrocarbure léger
+  - Plomb
+  - Mercure
+  - Cadmium
+  - Microplastique
+  - Cyanobactérie
+  - Bactérie
